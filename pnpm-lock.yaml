@@ -4,6 +4,7 @@ importers:
 
   .:
     specifiers:
+      '@changesets/changelog-github': ^0.4.0
       '@changesets/cli': ^2.16.0
       concurrently: ^6.1.0
       esm: ^3.2.25
@@ -15,6 +16,7 @@ importers:
       uvu: ^0.5.1
       watchlist: ^0.2.3
     devDependencies:
+      '@changesets/changelog-github': 0.4.0
       '@changesets/cli': 2.16.0
       concurrently: 6.2.1
       esm: 3.2.25
@@ -1312,6 +1314,14 @@ packages:
       semver: 5.7.1
     dev: true
 
+  /@changesets/changelog-github/0.4.0:
+    resolution: {integrity: sha512-4GphTAdHJfECuuQg4l0eFGYyUh26mfyXpAi2FImrQvaN+boqTM+9EAAJe2b8Y3OKRfoET+ihgo+LARhW2xJoiw==}
+    dependencies:
+      '@changesets/get-github-info': 0.5.0
+      '@changesets/types': 4.0.0
+      dotenv: 8.6.0
+    dev: true
+
   /@changesets/cli/2.16.0:
     resolution: {integrity: sha512-VFkXSyyk/WRjjUoBI7g7cDy09qBjPbBQOloPMEshTzMo/NY9muWHl2yB/FSSkV/6PxGimPtJ7aEJPYfk8HCfXw==}
     hasBin: true
@@ -1374,6 +1384,13 @@ packages:
       chalk: 2.4.2
       fs-extra: 7.0.1
       semver: 5.7.1
+    dev: true
+
+  /@changesets/get-github-info/0.5.0:
+    resolution: {integrity: sha512-vm5VgHwrxkMkUjFyn3UVNKLbDp9YMHd3vMf1IyJoa/7B+6VpqmtAaXyDS0zBLfN5bhzVCHrRnj4GcZXXcqrFTw==}
+    dependencies:
+      dataloader: 1.4.0
+      node-fetch: 2.6.1
     dev: true
 
   /@changesets/get-release-plan/3.0.0:
@@ -3517,6 +3534,10 @@ packages:
       assert-plus: 1.0.0
     dev: true
 
+  /dataloader/1.4.0:
+    resolution: {integrity: sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==}
+    dev: true
+
   /date-fns/2.23.0:
     resolution: {integrity: sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==}
     engines: {node: '>=0.11'}
@@ -3668,6 +3689,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       is-obj: 2.0.0
+    dev: true
+
+  /dotenv/8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
     dev: true
 
   /duplexer/0.1.1:
