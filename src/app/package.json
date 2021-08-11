@@ -1,6 +1,6 @@
 {
   "name": "pnpm-app-example",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "",
   "amdName": "app",
@@ -32,6 +32,6 @@
   "dependencies": {
     "testing-pnpm-package-a": "1.0.1",
     "testing-pnpm-package-b": "1.0.1",
-    "testing-pnpm-package-c": "1.0.4"
+    "testing-pnpm-package-c": "1.0.5"
   }
 }
