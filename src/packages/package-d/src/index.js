@@ -1,2 +1,2 @@
 
-export const d = 'd'
+export const d = 'dcool'
