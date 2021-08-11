@@ -26,6 +26,7 @@
     "build-pkgs": "pnpm run build --filter testing-pnpm-package-*"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.16.0",
     "concurrently": "^6.1.0",
     "esm": "^3.2.25",
     "lerna": "^4.0.0",
