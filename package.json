@@ -24,7 +24,8 @@
     "build-via-pnpm": "pnpm run build -r",
     "build-via-lerna": "lerna run build",
     "build-a": "pnpm run build --filter testing-pnpm-package-a",
-    "build-pkgs": "pnpm run build --filter testing-pnpm-package-*"
+    "build-pkgs": "pnpm run build --filter testing-pnpm-package-*",
+    "publish": "pnpm publish -r && changeset publish"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.0",
