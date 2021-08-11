@@ -1,0 +1,31 @@
+{
+  "name": "testing-pnpm-package-b",
+  "version": "1.0.0",
+  "description": "",
+  "amdName": "packageB",
+  "source": "src/index.js",
+  "main": "dist/package-b.js",
+  "module": "dist/package-b.module.js",
+  "unpkg": "dist/package-b.umd.js",
+  "sideEffects": false,
+  "scripts": {
+    "start": "npm run sync && concurrently 'npm:watch' 'npm:serve'",
+    "test": "uvu -r esm tests",
+    "serve": "servor dist index.html 8081 --reload --browse",
+    "watch:test": "watchlist src tests -- npm run test",
+    "watch:copy": "watchlist example -- npm run sync",
+    "watch:build": "npm run build:browser -- --watch --no-compress",
+    "sync": "cp example/index.html dist",
+    "watch": "concurrently 'npm:watch:*'",
+    "build": "concurrently 'npm:build:*'",
+    "build:package": "microbundle",
+    "build:browser": "microbundle build --external none -f iife,umd -o dist/browser",
+    "build:no-deps": "microbundle build -f iife,umd -o dist/browser-no-deps",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
+  },
+  "keywords": [],
+  "author": "DavidWells",
+  "license": "ISC"
+}
