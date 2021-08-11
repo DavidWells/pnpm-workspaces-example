@@ -16,6 +16,7 @@
   "scripts": {
     "preinstall": "only-allow pnpm",
     "setup": "pnpm install",
+    "changeset": "changeset",
     "syncpack": "syncpack list-mismatches",
     "build-specific-pkgs": "npm run build -w package-a && npm run build -w package-b",
     "build-specific-pkgs-two": "npm run build-deps && npm run build -w package-c",
