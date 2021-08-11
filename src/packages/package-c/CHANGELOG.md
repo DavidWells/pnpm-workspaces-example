@@ -1,5 +1,12 @@
 # testing-pnpm-package-c
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - testing-pnpm-package-d@1.0.2
+
 ## 1.0.3
 
 ### Patch Changes
