@@ -1,5 +1,12 @@
 # pnpm-app-example
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`3f6aa2a`](https://github.com/DavidWells/pnpm-workspaces-example/commit/3f6aa2a018457085f5f144670177d316fcb46d8b)]:
+  - testing-pnpm-package-c@1.2.0
+
 ## 1.1.0
 
 ### Minor Changes
