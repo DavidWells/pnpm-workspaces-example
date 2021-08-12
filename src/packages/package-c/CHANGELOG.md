@@ -1,5 +1,11 @@
 # testing-pnpm-package-c
 
+## 1.0.11
+
+### Patch Changes
+
+- [#14](https://github.com/DavidWells/pnpm-workspaces-example/pull/14) [`514483c`](https://github.com/DavidWells/pnpm-workspaces-example/commit/514483c75f40acd8dec1bffde2e3480364a64216) Thanks [@DavidWells](https://github.com/DavidWells)! - Much wow
+
 ## 1.0.10
 
 ### Patch Changes
