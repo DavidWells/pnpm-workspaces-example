@@ -1,6 +1,6 @@
 {
   "name": "testing-pnpm-package-c",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "amdName": "packageC",
   "source": "src/index.js",
