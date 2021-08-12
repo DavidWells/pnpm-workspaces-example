@@ -33,7 +33,7 @@ jobs:
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile false
 
       # - name: create version
       #   uses: changesets/action@master

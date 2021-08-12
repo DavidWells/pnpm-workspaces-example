@@ -11,9 +11,11 @@
     "src/packages/**"
   ],
   "engines": {
-    "node": ">16.0.0"
+    "node": ">16.0.0",
+    "pnpm": ">=6"
   },
   "scripts": {
+    "update-deps": "pnpm update -i -r --latest",
     "preinstall": "only-allow pnpm",
     "setup": "pnpm install",
     "changelog": "echo 'generate master changelog' && conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
@@ -28,7 +30,7 @@
     "build-pkgs": "pnpm run build --filter testing-pnpm-package-*",
     "publish": "pnpm publish -r",
     "ci:version": "pnpm changelog && changeset version && node .github/update-version.js && git add .",
-    "ci:publish": "pnpm compile && pnpm publish -r",
+    "ci:publish": "pnpm build-pkgs && pnpm publish -r",
     "changeset-publish": "changeset publish"
   },
   "devDependencies": {
