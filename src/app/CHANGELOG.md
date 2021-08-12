@@ -1,5 +1,12 @@
 # pnpm-app-example
 
+## 1.0.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - testing-pnpm-package-c@1.0.7
+
 ## 1.0.6
 
 ### Patch Changes
