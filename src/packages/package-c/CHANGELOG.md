@@ -1,5 +1,11 @@
 # testing-pnpm-package-c
 
+## 1.2.0
+
+### Minor Changes
+
+- [#18](https://github.com/DavidWells/pnpm-workspaces-example/pull/18) [`3f6aa2a`](https://github.com/DavidWells/pnpm-workspaces-example/commit/3f6aa2a018457085f5f144670177d316fcb46d8b) Thanks [@DavidWells](https://github.com/DavidWells)! - Update thingy
+
 ## 1.1.0
 
 ### Minor Changes
