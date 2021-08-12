@@ -1,0 +1,13 @@
+/**
+ * Asserts that ${value} is a `String` or `Array` whose length is less than that
+ * of ${otherStringOrArray}.
+ * @param otherStringOrArray ['i', 'have', 4, 'items']
+ * @param value ['i have one item']
+ * @matcherName toBeShorterThan
+ * @memberMatcherName toHaveShorterThan
+ * @matcherMessage expected ${value} to be a string or array whose length is
+ * less than that of ${otherStringOrArray}
+ * @matcherNotMessage expected ${value} not to be a string or array whose length
+ * is less than that of ${otherStringOrArray}
+ */
+export declare const isShorterThan: import("./lib/curry2").CurriedFn2<string | any[]>;

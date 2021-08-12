@@ -1,0 +1,16 @@
+"use strict";
+exports.__esModule = true;
+exports.isEmptyArray = void 0;
+var is_array_of_size_1 = require("./is-array-of-size");
+/**
+ * Asserts that ${value} is a valid `Array` containing no items.
+ * @param value []
+ * @matcherName toBeEmptyArray
+ * @memberMatcherName toHaveEmptyArray
+ * @matcherMessage expected ${value} to be an array containing no items
+ * @matcherNotMessage expected ${value} not to be an array containing no items
+ */
+var isEmptyArray = function (value) {
+    return is_array_of_size_1.isArrayOfSize(0, value);
+};
+exports.isEmptyArray = isEmptyArray;

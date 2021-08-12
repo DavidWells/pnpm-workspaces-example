@@ -1,0 +1,22 @@
+"use strict";
+exports.__esModule = true;
+exports.isSameLengthAs = void 0;
+var curry2_1 = require("./lib/curry2");
+var is_indexed_list_1 = require("./lib/is-indexed-list");
+/**
+ * Asserts that ${value} is a `String` or `Array` whose length is the same as
+ * that of ${otherStringOrArray}.
+ * @param otherStringOrArray ['i have', '2 items']
+ * @param value ['i also have', '2 items']
+ * @matcherName toBeSameLengthAs
+ * @memberMatcherName toHaveSameLengthAs
+ * @matcherMessage expected ${value} to be a string or array whose length is the
+ * same as that of ${otherStringOrArray}
+ * @matcherNotMessage expected ${value} not to be a string or array whose length
+ * is the same as that of ${otherStringOrArray}
+ */
+exports.isSameLengthAs = curry2_1.curry2(function (otherStringOrArray, value) {
+    return is_indexed_list_1.isIndexedList(value) &&
+        is_indexed_list_1.isIndexedList(otherStringOrArray) &&
+        value.length === otherStringOrArray.length;
+});

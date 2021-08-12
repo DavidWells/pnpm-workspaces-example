@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var _a, _b, _c, _d, _e;
+exports.__esModule = true;
+var chalk_1 = __importDefault(require("chalk"));
+var fix_mismatches_1 = require("./commands/fix-mismatches");
+var constants_1 = require("./constants");
+var get_config_1 = require("./lib/get-config");
+var commander_1 = require("commander");
+commander_1.program.description("\n  Ensure that multiple packages requiring the same dependency define the same\n  version, so that every package requires eg. react@16.4.2, instead of a\n  combination of react@16.4.2, react@0.15.9, and react@16.0.0.".replace(/^\n/, ''));
+commander_1.program.on('--help', function () {
+    console.log(chalk_1["default"](templateObject_1 || (templateObject_1 = __makeTemplateObject(["\nResolving Packages:\n  1. If {yellow --source} globs are provided, use those.\n  2. If using Pnpm Workspaces, read {yellow packages} from {yellow pnpm-workspace.yaml} in the root of the project.\n  3. If using Yarn Workspaces, read {yellow workspaces} from {yellow package.json}.\n  4. If using Lerna, read {yellow packages} from {yellow lerna.json}.\n  5. Default to {yellow \"package.json\"} and {yellow \"packages/*/package.json\"}.\n\nExamples:\n  {dim # uses defaults for resolving packages}\n  syncpack fix-mismatches\n  {dim # uses packages defined by --source when provided}\n  syncpack fix-mismatches --source {yellow \"apps/*/package.json\"}\n  {dim # multiple globs can be provided like this}\n  syncpack fix-mismatches --source {yellow \"apps/*/package.json\"} --source {yellow \"core/*/package.json\"}\n  {dim # uses dependencies regular expression defined by --filter when provided}\n  syncpack fix-mismatches --filter {yellow \"typescript|tslint\"}\n  {dim # only inspect \"devDependencies\"}\n  syncpack fix-mismatches --dev\n  {dim # only inspect \"devDependencies\" and \"peerDependencies\"}\n  syncpack fix-mismatches --dev --peer\n  {dim # indent package.json with 4 spaces instead of 2}\n  syncpack fix-mismatches --indent {yellow \"    \"}\n\nReference:\n  globs            {blue.underline https://github.com/isaacs/node-glob#glob-primer}\n  lerna.json       {blue.underline https://github.com/lerna/lerna#lernajson}\n  Yarn Workspaces  {blue.underline https://yarnpkg.com/lang/en/docs/workspaces}\n  Pnpm Workspaces  {blue.underline https://pnpm.js.org/en/workspaces}\n"], ["\nResolving Packages:\n  1. If {yellow --source} globs are provided, use those.\n  2. If using Pnpm Workspaces, read {yellow packages} from {yellow pnpm-workspace.yaml} in the root of the project.\n  3. If using Yarn Workspaces, read {yellow workspaces} from {yellow package.json}.\n  4. If using Lerna, read {yellow packages} from {yellow lerna.json}.\n  5. Default to {yellow \"package.json\"} and {yellow \"packages/*/package.json\"}.\n\nExamples:\n  {dim # uses defaults for resolving packages}\n  syncpack fix-mismatches\n  {dim # uses packages defined by --source when provided}\n  syncpack fix-mismatches --source {yellow \"apps/*/package.json\"}\n  {dim # multiple globs can be provided like this}\n  syncpack fix-mismatches --source {yellow \"apps/*/package.json\"} --source {yellow \"core/*/package.json\"}\n  {dim # uses dependencies regular expression defined by --filter when provided}\n  syncpack fix-mismatches --filter {yellow \"typescript|tslint\"}\n  {dim # only inspect \"devDependencies\"}\n  syncpack fix-mismatches --dev\n  {dim # only inspect \"devDependencies\" and \"peerDependencies\"}\n  syncpack fix-mismatches --dev --peer\n  {dim # indent package.json with 4 spaces instead of 2}\n  syncpack fix-mismatches --indent {yellow \"    \"}\n\nReference:\n  globs            {blue.underline https://github.com/isaacs/node-glob#glob-primer}\n  lerna.json       {blue.underline https://github.com/lerna/lerna#lernajson}\n  Yarn Workspaces  {blue.underline https://yarnpkg.com/lang/en/docs/workspaces}\n  Pnpm Workspaces  {blue.underline https://pnpm.js.org/en/workspaces}\n"]))));
+});
+(_a = (_b = (_c = (_d = (_e = commander_1.program
+    .option.apply(commander_1.program, __spreadArray([], __read(constants_1.option.source))))
+    .option.apply(_e, __spreadArray([], __read(constants_1.option.prod))))
+    .option.apply(_d, __spreadArray([], __read(constants_1.option.dev))))
+    .option.apply(_c, __spreadArray([], __read(constants_1.option.peer))))
+    .option.apply(_b, __spreadArray([], __read(constants_1.option.filter))))
+    .option.apply(_a, __spreadArray([], __read(constants_1.option.indent))).parse(process.argv);
+fix_mismatches_1.fixMismatchesToDisk(get_config_1.getConfig({
+    dev: commander_1.program.opts().dev,
+    filter: commander_1.program.opts().filter,
+    indent: commander_1.program.opts().indent,
+    peer: commander_1.program.opts().peer,
+    prod: commander_1.program.opts().prod,
+    source: commander_1.program.opts().source
+}));
+var templateObject_1;

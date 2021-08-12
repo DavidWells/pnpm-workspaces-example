@@ -1,0 +1,11 @@
+/**
+ * Asserts that ${value} is an `Object` containing at least one own member.
+ * @param value {} { i: 'am not empty' }
+ * @matcherName toBeNonEmptyObject
+ * @memberMatcherName toHaveNonEmptyObject
+ * @matcherMessage expected ${value} to be an object with at least one own
+ * member
+ * @matcherNotMessage expected ${value} not to be an object with at least one
+ * own member
+ */
+export declare const isNonEmptyObject: <T = any>(value: unknown) => value is T;

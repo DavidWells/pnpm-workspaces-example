@@ -1,0 +1,21 @@
+"use strict";
+exports.__esModule = true;
+exports.isValidDate = void 0;
+var is_date_1 = require("./is-date");
+/**
+ * Asserts that ${value} is an instance of `Date` whose internal value is valid.
+ * `Date` is little like `Promise` in that it is a container for a value. For
+ * example, `new Date('wut?')` is a valid `Date` which wraps a value that is not
+ * valid.
+ * @param value new Date('2020-01-01')
+ * @matcherName toBeValidDate
+ * @memberMatcherName toHaveValidDate
+ * @matcherMessage expected ${value} to be an instance of Date with a valid
+ * value
+ * @matcherNotMessage expected ${value} not to be an instance of Date with a
+ * valid value
+ */
+var isValidDate = function (value) {
+    return is_date_1.isDate(value) && !isNaN(value.getTime());
+};
+exports.isValidDate = isValidDate;

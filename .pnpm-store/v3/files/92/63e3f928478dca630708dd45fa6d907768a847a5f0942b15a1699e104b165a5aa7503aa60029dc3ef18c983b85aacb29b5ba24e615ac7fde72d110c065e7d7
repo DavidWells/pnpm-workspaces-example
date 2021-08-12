@@ -1,0 +1,290 @@
+"use strict";
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+exports.__esModule = true;
+exports.nullifyNode = exports.removeNode = exports.createTreePermuter = void 0;
+var is_array_1 = require("../is-array");
+var is_object_1 = require("../is-object");
+var isDeepNode = function (node) {
+    return node.key !== null && node.parentNode !== null;
+};
+function treeWalker(rootNode) {
+    function visit(node) {
+        var i, len, _a, _b, _i, key;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0: return [4 /*yield*/, node];
+                case 1:
+                    _c.sent();
+                    if (!is_array_1.isArray(node.value)) return [3 /*break*/, 6];
+                    i = 0, len = node.value.length;
+                    _c.label = 2;
+                case 2:
+                    if (!(i < len)) return [3 /*break*/, 5];
+                    return [5 /*yield**/, __values(visit({
+                            key: i,
+                            parentNode: node,
+                            path: node.path.concat(i),
+                            value: node.value[i]
+                        }))];
+                case 3:
+                    _c.sent();
+                    _c.label = 4;
+                case 4:
+                    i++;
+                    return [3 /*break*/, 2];
+                case 5: return [3 /*break*/, 10];
+                case 6:
+                    if (!is_object_1.isObject(node.value)) return [3 /*break*/, 10];
+                    _a = [];
+                    for (_b in node.value)
+                        _a.push(_b);
+                    _i = 0;
+                    _c.label = 7;
+                case 7:
+                    if (!(_i < _a.length)) return [3 /*break*/, 10];
+                    key = _a[_i];
+                    if (!node.value.hasOwnProperty(key)) return [3 /*break*/, 9];
+                    return [5 /*yield**/, __values(visit({
+                            key: key,
+                            parentNode: node,
+                            path: node.path.concat(key),
+                            value: node.value[key]
+                        }))];
+                case 8:
+                    _c.sent();
+                    _c.label = 9;
+                case 9:
+                    _i++;
+                    return [3 /*break*/, 7];
+                case 10: return [2 /*return*/];
+            }
+        });
+    }
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [5 /*yield**/, __values(visit({ key: null, parentNode: null, path: [], value: rootNode }))];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}
+function annotatedTreeWalker(rootNode) {
+    var traverser, traverser_1, traverser_1_1, node, e_1_1;
+    var e_1, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                traverser = treeWalker(rootNode);
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 6, 7, 8]);
+                traverser_1 = __values(traverser), traverser_1_1 = traverser_1.next();
+                _b.label = 2;
+            case 2:
+                if (!!traverser_1_1.done) return [3 /*break*/, 5];
+                node = traverser_1_1.value;
+                if (is_array_1.isArray(node.value)) {
+                    node.isArray = true;
+                    node.isBranch = true;
+                }
+                else if (is_object_1.isObject(node.value)) {
+                    node.isBranch = true;
+                    node.isObject = true;
+                }
+                else {
+                    node.isLeaf = true;
+                }
+                return [4 /*yield*/, node];
+            case 3:
+                _b.sent();
+                _b.label = 4;
+            case 4:
+                traverser_1_1 = traverser_1.next();
+                return [3 /*break*/, 2];
+            case 5: return [3 /*break*/, 8];
+            case 6:
+                e_1_1 = _b.sent();
+                e_1 = { error: e_1_1 };
+                return [3 /*break*/, 8];
+            case 7:
+                try {
+                    if (traverser_1_1 && !traverser_1_1.done && (_a = traverser_1["return"])) _a.call(traverser_1);
+                }
+                finally { if (e_1) throw e_1.error; }
+                return [7 /*endfinally*/];
+            case 8: return [2 /*return*/];
+        }
+    });
+}
+function permutingTreeWalker(rootNode, visitor) {
+    var traverser, _loop_1, traverser_2, traverser_2_1, node, e_2_1;
+    var e_2, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                traverser = annotatedTreeWalker(rootNode);
+                _loop_1 = function (node) {
+                    var permutation_1;
+                    return __generator(this, function (_c) {
+                        switch (_c.label) {
+                            case 0:
+                                if (!isDeepNode(node)) return [3 /*break*/, 2];
+                                visitor(node, function (applyMutation) {
+                                    var parentPath = node.path.slice(0, -1);
+                                    var clonedRoot = JSON.parse(JSON.stringify(rootNode));
+                                    var getChild = function (ancestor, key) { return ancestor[key]; };
+                                    var clonedParent = parentPath.reduce(getChild, clonedRoot);
+                                    applyMutation(node.key, clonedParent);
+                                    permutation_1 = clonedRoot;
+                                });
+                                if (!permutation_1) return [3 /*break*/, 2];
+                                return [4 /*yield*/, permutation_1];
+                            case 1:
+                                _c.sent();
+                                _c.label = 2;
+                            case 2: return [2 /*return*/];
+                        }
+                    });
+                };
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 6, 7, 8]);
+                traverser_2 = __values(traverser), traverser_2_1 = traverser_2.next();
+                _b.label = 2;
+            case 2:
+                if (!!traverser_2_1.done) return [3 /*break*/, 5];
+                node = traverser_2_1.value;
+                return [5 /*yield**/, _loop_1(node)];
+            case 3:
+                _b.sent();
+                _b.label = 4;
+            case 4:
+                traverser_2_1 = traverser_2.next();
+                return [3 /*break*/, 2];
+            case 5: return [3 /*break*/, 8];
+            case 6:
+                e_2_1 = _b.sent();
+                e_2 = { error: e_2_1 };
+                return [3 /*break*/, 8];
+            case 7:
+                try {
+                    if (traverser_2_1 && !traverser_2_1.done && (_a = traverser_2["return"])) _a.call(traverser_2);
+                }
+                finally { if (e_2) throw e_2.error; }
+                return [7 /*endfinally*/];
+            case 8: return [2 /*return*/];
+        }
+    });
+}
+var createTreePermuter = function (visitor, initialValues) {
+    if (initialValues === void 0) { initialValues = []; }
+    return function (rootNode) {
+        var traverser, traverser_3, traverser_3_1, permutation, e_3_1;
+        var e_3, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    traverser = permutingTreeWalker(rootNode, visitor);
+                    return [5 /*yield**/, __values(initialValues)];
+                case 1:
+                    _b.sent();
+                    _b.label = 2;
+                case 2:
+                    _b.trys.push([2, 7, 8, 9]);
+                    traverser_3 = __values(traverser), traverser_3_1 = traverser_3.next();
+                    _b.label = 3;
+                case 3:
+                    if (!!traverser_3_1.done) return [3 /*break*/, 6];
+                    permutation = traverser_3_1.value;
+                    return [4 /*yield*/, permutation];
+                case 4:
+                    _b.sent();
+                    _b.label = 5;
+                case 5:
+                    traverser_3_1 = traverser_3.next();
+                    return [3 /*break*/, 3];
+                case 6: return [3 /*break*/, 9];
+                case 7:
+                    e_3_1 = _b.sent();
+                    e_3 = { error: e_3_1 };
+                    return [3 /*break*/, 9];
+                case 8:
+                    try {
+                        if (traverser_3_1 && !traverser_3_1.done && (_a = traverser_3["return"])) _a.call(traverser_3);
+                    }
+                    finally { if (e_3) throw e_3.error; }
+                    return [7 /*endfinally*/];
+                case 9: return [2 /*return*/];
+            }
+        });
+    };
+};
+exports.createTreePermuter = createTreePermuter;
+var removeNode = function (node, mutateNode) {
+    if (node.parentNode) {
+        if (node.parentNode.isArray) {
+            mutateNode(function (key, clonedParent) {
+                clonedParent.splice(key, 1);
+            });
+        }
+        else if (node.parentNode.isObject) {
+            mutateNode(function (key, clonedParent) {
+                delete clonedParent[key];
+            });
+        }
+    }
+};
+exports.removeNode = removeNode;
+var nullifyNode = function (node, mutateNode) {
+    if (node.parentNode) {
+        if (node.parentNode.isArray) {
+            mutateNode(function (key, clonedParent) {
+                clonedParent.splice(key, 1, null);
+            });
+        }
+        else if (node.parentNode.isObject) {
+            mutateNode(function (key, clonedParent) {
+                clonedParent[key] = null;
+            });
+        }
+    }
+};
+exports.nullifyNode = nullifyNode;

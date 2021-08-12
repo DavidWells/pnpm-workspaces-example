@@ -1,0 +1,11 @@
+/**
+ * Asserts that ${value} is a `Number` which results in a whole number when
+ * divided by ${otherNumber}.
+ * @param otherNumber 2
+ * @param value 12
+ * @matcherName toBeDivisibleBy
+ * @memberMatcherName toHaveDivisibleBy
+ * @matcherMessage expected ${value} to be divisible by ${otherNumber}
+ * @matcherNotMessage expected ${value} not to be divisible by ${otherNumber}
+ */
+export declare const isDivisibleBy: import("./lib/curry2").CurriedFn2<number>;

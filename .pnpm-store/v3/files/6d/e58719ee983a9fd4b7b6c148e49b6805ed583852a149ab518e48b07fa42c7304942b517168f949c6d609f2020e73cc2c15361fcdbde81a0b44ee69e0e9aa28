@@ -1,0 +1,43 @@
+"use strict";
+exports.__esModule = true;
+exports.getConfig = void 0;
+var cosmiconfig_1 = require("cosmiconfig");
+var expect_more_1 = require("expect-more");
+var is_semver_1 = require("../commands/lib/is-semver");
+var constants_1 = require("../constants");
+var getConfig = function (program) {
+    var rcSearch = cosmiconfig_1.cosmiconfigSync('syncpack').search();
+    var rcConfig = rcSearch !== null ? rcSearch.config : {};
+    var rcFile = expect_more_1.isObject(rcConfig) ? rcConfig : {};
+    var getOption = function (name, isValid) {
+        var cliOption = program[name];
+        if (isValid(cliOption)) {
+            return cliOption;
+        }
+        var configOption = rcFile[name];
+        if (isValid(configOption)) {
+            return configOption;
+        }
+        return constants_1.DEFAULT_CONFIG[name];
+    };
+    var isVersionGroup = function (value) {
+        return expect_more_1.isObject(value) && expect_more_1.isArrayOfStrings(value.packages) && expect_more_1.isArrayOfStrings(value.dependencies);
+    };
+    var isArrayOfVersionGroups = function (value) {
+        return expect_more_1.isArray(value) && value.every(isVersionGroup);
+    };
+    var hasTypeOverride = program.prod || program.dev || program.peer;
+    return {
+        dev: hasTypeOverride ? Boolean(program.dev) : getOption('dev', expect_more_1.isBoolean),
+        filter: getOption('filter', function (value) { return expect_more_1.isNonEmptyString(value); }),
+        indent: getOption('indent', function (value) { return expect_more_1.isNonEmptyString(value); }),
+        peer: hasTypeOverride ? Boolean(program.peer) : getOption('peer', expect_more_1.isBoolean),
+        prod: hasTypeOverride ? Boolean(program.prod) : getOption('prod', expect_more_1.isBoolean),
+        semverRange: getOption('semverRange', is_semver_1.isValidSemverRange),
+        sortAz: getOption('sortAz', expect_more_1.isArrayOfStrings),
+        sortFirst: getOption('sortFirst', expect_more_1.isArrayOfStrings),
+        source: getOption('source', expect_more_1.isArrayOfStrings),
+        versionGroups: getOption('versionGroups', isArrayOfVersionGroups)
+    };
+};
+exports.getConfig = getConfig;

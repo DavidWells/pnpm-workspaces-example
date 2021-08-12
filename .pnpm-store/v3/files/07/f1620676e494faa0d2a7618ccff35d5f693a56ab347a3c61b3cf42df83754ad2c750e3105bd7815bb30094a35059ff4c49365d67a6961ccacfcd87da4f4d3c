@@ -1,0 +1,21 @@
+"use strict";
+exports.__esModule = true;
+exports.isNear = void 0;
+var is_within_range_1 = require("./is-within-range");
+var curry3_1 = require("./lib/curry3");
+/**
+ * Asserts that ${value} is a number within the given acceptable distance from
+ * ${otherNumber}.
+ * @param otherNumber 5
+ * @param epsilon 0.5
+ * @param value 4.8
+ * @matcherName toBeNear
+ * @memberMatcherName toHaveNumberNear
+ * @matcherMessage expected ${value} to be within ${epsilon} greater or less
+ * than ${otherNumber}
+ * @matcherNotMessage expected ${value} not to be within ${epsilon} greater or
+ * less than ${otherNumber}
+ */
+exports.isNear = curry3_1.curry3(function (otherNumber, epsilon, value) {
+    return is_within_range_1.isWithinRange(otherNumber - epsilon, otherNumber + epsilon, value);
+});

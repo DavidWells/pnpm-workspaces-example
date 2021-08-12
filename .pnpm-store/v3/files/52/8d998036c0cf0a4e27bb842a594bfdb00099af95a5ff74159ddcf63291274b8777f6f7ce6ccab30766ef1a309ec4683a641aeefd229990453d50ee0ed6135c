@@ -1,0 +1,39 @@
+{
+  "name": "@lerna/create-symlink",
+  "version": "4.0.0",
+  "description": "An internal Lerna tool",
+  "keywords": [
+    "lerna",
+    "utils"
+  ],
+  "homepage": "https://github.com/lerna/lerna/tree/master/utils/create-symlink#readme",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel Stockman",
+    "url": "https://github.com/evocateur"
+  },
+  "files": [
+    "create-symlink.js"
+  ],
+  "main": "create-symlink.js",
+  "engines": {
+    "node": ">= 10.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerna/lerna.git",
+    "directory": "utils/create-symlink"
+  },
+  "scripts": {
+    "test": "echo \"Run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "cmd-shim": "^4.1.0",
+    "fs-extra": "^9.1.0",
+    "npmlog": "^4.1.2"
+  },
+  "gitHead": "4582c476e07dddddd6b2e3ab6e7f52c1f9eed59a"
+}

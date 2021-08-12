@@ -1,0 +1,17 @@
+"use strict";
+exports.__esModule = true;
+exports.isEvenNumber = void 0;
+var is_divisible_by_1 = require("./is-divisible-by");
+var is_number_1 = require("./is-number");
+/**
+ * Asserts that ${value} is an even `Number`.
+ * @param value 2
+ * @matcherName toBeEvenNumber
+ * @memberMatcherName toHaveEvenNumber
+ * @matcherMessage expected ${value} to be an even number
+ * @matcherNotMessage expected ${value} not to be an even number
+ */
+var isEvenNumber = function (value) {
+    return is_number_1.isNumber(value) && is_divisible_by_1.isDivisibleBy(2, value);
+};
+exports.isEvenNumber = isEvenNumber;

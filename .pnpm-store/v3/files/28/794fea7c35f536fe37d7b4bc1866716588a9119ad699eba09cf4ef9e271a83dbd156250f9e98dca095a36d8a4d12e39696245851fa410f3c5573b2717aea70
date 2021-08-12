@@ -1,0 +1,6 @@
+import { SyncpackConfig } from '../constants';
+import { SourceWrapper } from './lib/get-wrappers';
+declare type Options = Pick<SyncpackConfig, 'dev' | 'filter' | 'indent' | 'peer' | 'prod' | 'semverRange' | 'source'>;
+export declare const setSemverRanges: (wrapper: SourceWrapper, options: Options) => void;
+export declare const setSemverRangesToDisk: (options: Options) => void;
+export {};

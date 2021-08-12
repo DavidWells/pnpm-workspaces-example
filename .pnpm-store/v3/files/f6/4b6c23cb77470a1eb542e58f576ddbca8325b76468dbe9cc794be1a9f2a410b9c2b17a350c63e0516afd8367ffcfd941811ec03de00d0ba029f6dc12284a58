@@ -1,0 +1,4 @@
+import { SyncpackConfig } from '../../constants';
+declare type Options = Pick<SyncpackConfig, 'semverRange'>;
+export declare const setSemverRange: ({ semverRange }: Options) => (version: string) => string;
+export {};

@@ -1,0 +1,65 @@
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+exports.__esModule = true;
+exports.lintSemverRangesFromDisk = exports.lintSemverRanges = void 0;
+var chalk_1 = __importDefault(require("chalk"));
+var get_wrappers_1 = require("./lib/get-wrappers");
+var get_installations_1 = require("./lib/installations/get-installations");
+var log_1 = require("./lib/log");
+var set_semver_range_1 = require("./lib/set-semver-range");
+var lintSemverRanges = function (wrappers, options) {
+    var e_1, _a;
+    var iterator = get_installations_1.getInstallations(wrappers, options);
+    var setSemverRange = set_semver_range_1.setSemverRange(options);
+    var installationsWithErrors = [];
+    try {
+        for (var iterator_1 = __values(iterator), iterator_1_1 = iterator_1.next(); !iterator_1_1.done; iterator_1_1 = iterator_1.next()) {
+            var installation = iterator_1_1.value;
+            var name = installation.name, type = installation.type, version = installation.version, source = installation.source;
+            var dependencies = installation.source.contents[type];
+            if (dependencies) {
+                var currentVersion = dependencies[name];
+                var versionWithSelectedSemverRange = setSemverRange(version);
+                if (currentVersion !== versionWithSelectedSemverRange) {
+                    log_1.log(chalk_1["default"](templateObject_1 || (templateObject_1 = __makeTemplateObject(["{red \u2715 ", "} ", " {dim in ", " of ", "}"], ["{red \u2715 ", "} ", " {dim in ", " of ", "}"])), name, version, type, source.contents.name));
+                    installationsWithErrors.push(installation);
+                }
+            }
+        }
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (iterator_1_1 && !iterator_1_1.done && (_a = iterator_1["return"])) _a.call(iterator_1);
+        }
+        finally { if (e_1) throw e_1.error; }
+    }
+    return { installationsWithErrors: installationsWithErrors };
+};
+exports.lintSemverRanges = lintSemverRanges;
+var lintSemverRangesFromDisk = function (options) {
+    var wrappers = get_wrappers_1.getWrappers(options);
+    var installationsWithErrors = exports.lintSemverRanges(wrappers, options).installationsWithErrors;
+    if (installationsWithErrors.length > 0) {
+        process.exit(1);
+    }
+};
+exports.lintSemverRangesFromDisk = lintSemverRangesFromDisk;
+var templateObject_1;

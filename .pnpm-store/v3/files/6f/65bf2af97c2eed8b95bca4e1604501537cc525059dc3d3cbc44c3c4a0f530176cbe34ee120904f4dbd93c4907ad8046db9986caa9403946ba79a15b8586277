@@ -1,0 +1,18 @@
+"use strict";
+exports.__esModule = true;
+exports.isDivisibleBy = void 0;
+var is_number_1 = require("./is-number");
+var curry2_1 = require("./lib/curry2");
+/**
+ * Asserts that ${value} is a `Number` which results in a whole number when
+ * divided by ${otherNumber}.
+ * @param otherNumber 2
+ * @param value 12
+ * @matcherName toBeDivisibleBy
+ * @memberMatcherName toHaveDivisibleBy
+ * @matcherMessage expected ${value} to be divisible by ${otherNumber}
+ * @matcherNotMessage expected ${value} not to be divisible by ${otherNumber}
+ */
+exports.isDivisibleBy = curry2_1.curry2(function (otherNumber, value) {
+    return is_number_1.isNumber(value) && is_number_1.isNumber(otherNumber) && value % otherNumber === 0;
+});

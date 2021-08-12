@@ -1,0 +1,26 @@
+{
+  "name": "servor",
+  "version": "4.0.2",
+  "description": "A dependency free dev server for single page app development",
+  "repository": "lukejacksonn/servor",
+  "main": "./servor.js",
+  "bin": {
+    "servor": "./cli.js"
+  },
+  "keywords": [
+    "server",
+    "https",
+    "livereload",
+    "spa"
+  ],
+  "scripts": {
+    "start": "sudo node cli tests/example --reload --browse --secure --static --module",
+    "cleanup": "rm -f servor.key servor.crt",
+    "test": "npm run cleanup && cd tests && node index.js"
+  },
+  "author": "Luke Jackson <lukejacksonn@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "puppeteer": "^3.0.4"
+  }
+}

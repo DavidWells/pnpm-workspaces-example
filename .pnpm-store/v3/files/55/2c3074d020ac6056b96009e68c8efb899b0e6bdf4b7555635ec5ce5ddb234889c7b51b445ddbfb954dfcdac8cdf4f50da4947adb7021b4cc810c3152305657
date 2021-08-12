@@ -1,0 +1,12 @@
+/**
+ * Asserts that ${value} is greater than or equal to ${otherNumber}.
+ * @param otherNumber 5
+ * @param value 10
+ * @matcherName toBeGreaterThanOrEqualTo
+ * @memberMatcherName toHaveGreaterThanOrEqualTo
+ * @matcherMessage expected ${value} to be greater than or equal to
+ * ${otherNumber}
+ * @matcherNotMessage expected ${value} not to be greater than or equal to
+ * ${otherNumber}
+ */
+export declare const isGreaterThanOrEqualTo: import("./lib/curry2").CurriedFn2<number>;

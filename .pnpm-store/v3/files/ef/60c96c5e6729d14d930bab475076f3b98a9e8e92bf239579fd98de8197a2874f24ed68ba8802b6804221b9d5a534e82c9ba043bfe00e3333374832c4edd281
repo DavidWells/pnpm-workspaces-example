@@ -1,0 +1,9 @@
+/**
+ * Asserts that ${value} is a `RegExp`.
+ * @param value new RegExp('i am a regular expression')
+ * @matcherName toBeRegExp
+ * @memberMatcherName toHaveRegExp
+ * @matcherMessage expected ${value} to be a regular expression
+ * @matcherNotMessage expected ${value} not to be a regular expression
+ */
+export declare const isRegExp: <CallTimeType = RegExp>(value: unknown) => value is CallTimeType;

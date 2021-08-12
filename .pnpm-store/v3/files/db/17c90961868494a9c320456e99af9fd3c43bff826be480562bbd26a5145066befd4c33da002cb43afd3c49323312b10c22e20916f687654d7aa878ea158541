@@ -1,0 +1,9 @@
+/**
+ * Asserts that ${value} is null
+ * @param value null
+ * @matcherName toBeNull
+ * @memberMatcherName toHaveNull
+ * @matcherMessage expected ${value} to be is null
+ * @matcherNotMessage expected ${value} not to be is null
+ */
+export declare const isNull: <CallTimeType = null>(value: unknown) => value is CallTimeType;

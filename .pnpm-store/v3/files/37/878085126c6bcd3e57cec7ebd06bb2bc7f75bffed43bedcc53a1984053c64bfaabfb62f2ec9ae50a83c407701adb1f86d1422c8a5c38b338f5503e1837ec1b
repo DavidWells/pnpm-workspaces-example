@@ -1,0 +1,20 @@
+"use strict";
+exports.__esModule = true;
+exports.isBefore = void 0;
+var is_after_1 = require("./is-after");
+var curry2_1 = require("./lib/curry2");
+/**
+ * Asserts that ${value} is a valid instance of `Date` whose value occurs before
+ * that of ${otherDate}.
+ * @param otherDate new Date('2020-01-01')
+ * @param value new Date('2019-12-31')
+ * @matcherName toBeBefore
+ * @memberMatcherName toHaveDateBefore
+ * @matcherMessage expected ${value} to be an instance of Date, occurring before
+ * ${otherDate}
+ * @matcherNotMessage expected ${value} not to be an instance of Date, occurring
+ * before ${otherDate}
+ */
+exports.isBefore = curry2_1.curry2(function (otherDate, value) {
+    return is_after_1.isAfter(value, otherDate);
+});

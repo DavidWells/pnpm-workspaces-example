@@ -1,0 +1,20 @@
+"use strict";
+exports.__esModule = true;
+exports.setSemverRange = void 0;
+var constants_1 = require("../../constants");
+var is_semver_1 = require("./is-semver");
+var setSemverRange = function (_a) {
+    var semverRange = _a.semverRange;
+    return function (version) {
+        if (!is_semver_1.isSemver(version) || !is_semver_1.isValidSemverRange(semverRange)) {
+            return version;
+        }
+        var nextVersion = is_semver_1.isLooseSemver(version) ? version.replace(/\.x/g, '.0') : version;
+        var from1stNumber = nextVersion.search(/[0-9]/);
+        var from1stDot = nextVersion.indexOf('.');
+        return semverRange === constants_1.RANGE_LOOSE
+            ? nextVersion.slice(from1stNumber, from1stDot) + ".x.x"
+            : "" + semverRange + nextVersion.slice(from1stNumber);
+    };
+};
+exports.setSemverRange = setSemverRange;

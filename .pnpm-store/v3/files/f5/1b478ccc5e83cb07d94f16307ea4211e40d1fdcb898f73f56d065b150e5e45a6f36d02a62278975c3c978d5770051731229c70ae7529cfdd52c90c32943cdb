@@ -1,0 +1,15 @@
+"use strict";
+exports.__esModule = true;
+exports.curry2 = void 0;
+var curry1_1 = require("./curry1");
+function curry2(fn) {
+    return function curriedFn2(b, a) {
+        switch (arguments.length) {
+            case 2:
+                return fn(b, a);
+            case 1:
+                return curry1_1.curry1(fn.bind(null, b));
+        }
+    };
+}
+exports.curry2 = curry2;

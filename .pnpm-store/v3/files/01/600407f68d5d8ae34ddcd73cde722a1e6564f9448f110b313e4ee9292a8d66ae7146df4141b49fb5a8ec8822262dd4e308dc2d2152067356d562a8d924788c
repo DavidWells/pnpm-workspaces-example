@@ -1,0 +1,9 @@
+/**
+ * Asserts that ${value} is an `Object`.
+ * @param value {} {}
+ * @matcherName toBeObject
+ * @memberMatcherName toHaveObject
+ * @matcherMessage expected ${value} to be an object
+ * @matcherNotMessage expected ${value} not to be an object
+ */
+export declare const isObject: <CallTimeType = any>(value: unknown) => value is CallTimeType;

@@ -1,0 +1,8 @@
+import { CurriedFn1 } from './curry1';
+declare type Fn2<R = any> = (b: unknown, a: unknown) => a is R;
+export declare type CurriedFn2<R = any> = {
+    (b: unknown, a: unknown): a is R;
+    (b: unknown): CurriedFn1<R>;
+};
+export declare function curry2<R>(fn: Fn2<R>): CurriedFn2<R>;
+export {};

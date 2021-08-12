@@ -1,0 +1,49 @@
+{
+  "name": "@lerna/project",
+  "version": "4.0.0",
+  "description": "Lerna project configuration",
+  "keywords": [
+    "lerna",
+    "core"
+  ],
+  "homepage": "https://github.com/lerna/lerna/tree/master/core/project#readme",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel Stockman",
+    "url": "https://github.com/evocateur"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">= 10.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerna/lerna.git",
+    "directory": "core/project"
+  },
+  "scripts": {
+    "test": "echo \"Run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@lerna/package": "4.0.0",
+    "@lerna/validation-error": "4.0.0",
+    "cosmiconfig": "^7.0.0",
+    "dedent": "^0.7.0",
+    "dot-prop": "^6.0.1",
+    "glob-parent": "^5.1.1",
+    "globby": "^11.0.2",
+    "load-json-file": "^6.2.0",
+    "npmlog": "^4.1.2",
+    "p-map": "^4.0.0",
+    "resolve-from": "^5.0.0",
+    "write-json-file": "^4.3.0"
+  },
+  "gitHead": "4582c476e07dddddd6b2e3ab6e7f52c1f9eed59a"
+}

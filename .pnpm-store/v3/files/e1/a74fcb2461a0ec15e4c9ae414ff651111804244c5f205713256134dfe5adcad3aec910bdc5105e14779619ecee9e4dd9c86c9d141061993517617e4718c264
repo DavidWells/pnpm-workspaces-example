@@ -1,0 +1,14 @@
+/**
+ * Asserts that ${value} is a `Number` which is both greater than or equal to
+ * ${floor} and less than or equal to ${ceiling}.
+ * @param floor 0
+ * @param ceiling 10
+ * @param value 7
+ * @matcherName toBeWithinRange
+ * @memberMatcherName toHaveNumberWithinRange
+ * @matcherMessage expected ${value} to be greater than or equal to ${floor} and
+ * less than or equal to ${ceiling}
+ * @matcherNotMessage expected ${value} not to be greater than or equal to
+ * ${floor} and less than or equal to ${ceiling}
+ */
+export declare const isWithinRange: import("./lib/curry3").CurriedFn3<number>;

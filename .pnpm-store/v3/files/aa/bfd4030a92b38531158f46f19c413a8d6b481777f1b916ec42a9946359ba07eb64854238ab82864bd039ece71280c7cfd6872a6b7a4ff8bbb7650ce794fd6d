@@ -1,0 +1,17 @@
+"use strict";
+exports.__esModule = true;
+exports.isOddNumber = void 0;
+var is_divisible_by_1 = require("./is-divisible-by");
+var is_number_1 = require("./is-number");
+/**
+ * Asserts that ${value} is an odd `Number`.
+ * @param value 5
+ * @matcherName toBeOddNumber
+ * @memberMatcherName toHaveOddNumber
+ * @matcherMessage expected ${value} to be an odd number
+ * @matcherNotMessage expected ${value} not to be an odd number
+ */
+var isOddNumber = function (value) {
+    return is_number_1.isNumber(value) && !is_divisible_by_1.isDivisibleBy(2, value);
+};
+exports.isOddNumber = isOddNumber;

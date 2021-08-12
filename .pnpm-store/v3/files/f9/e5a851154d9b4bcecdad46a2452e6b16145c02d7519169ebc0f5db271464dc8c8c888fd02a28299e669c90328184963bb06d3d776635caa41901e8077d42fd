@@ -1,0 +1,9 @@
+/**
+ * Asserts that ${value} is undefined
+ * @param value undefined
+ * @matcherName toBeUndefined
+ * @memberMatcherName toHaveUndefined
+ * @matcherMessage expected ${value} to be undefined
+ * @matcherNotMessage expected ${value} not to be undefined
+ */
+export declare const isUndefined: <CallTimeType = undefined>(value: unknown) => value is CallTimeType;

@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+exports.__esModule = true;
+exports.writeIfChanged = void 0;
+var chalk_1 = __importDefault(require("chalk"));
+var fs_extra_1 = require("fs-extra");
+var os_1 = require("os");
+var path_1 = require("path");
+var log_1 = require("./log");
+var toJson = function (indent, wrapper) {
+    return "" + JSON.stringify(wrapper.contents, null, indent) + os_1.EOL;
+};
+var writeIfChanged = function (indent, wrapper, mutateContents) {
+    var shortPath = path_1.relative(process.cwd(), wrapper.filePath);
+    mutateContents();
+    var after = toJson(indent, wrapper);
+    if (wrapper.json !== after) {
+        fs_extra_1.writeFileSync(wrapper.filePath, after);
+        log_1.log(chalk_1["default"].green('✓'), shortPath);
+    }
+    else {
+        log_1.log(chalk_1["default"].dim('-'), chalk_1["default"].dim(shortPath));
+    }
+};
+exports.writeIfChanged = writeIfChanged;

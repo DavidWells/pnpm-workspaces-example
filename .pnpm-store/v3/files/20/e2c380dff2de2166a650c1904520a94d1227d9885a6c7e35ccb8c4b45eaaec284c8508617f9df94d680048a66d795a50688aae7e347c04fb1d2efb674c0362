@@ -1,0 +1,6 @@
+declare type Fn1<R = any> = (a: unknown) => a is R;
+export declare type CurriedFn1<R = any> = {
+    (a: unknown): a is R;
+};
+export declare function curry1<R>(fn: Fn1<R>): CurriedFn1<R>;
+export {};

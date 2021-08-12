@@ -1,0 +1,37 @@
+{
+  "name": "@lerna/validation-error",
+  "version": "4.0.0",
+  "description": "An internal Lerna tool",
+  "keywords": [
+    "lerna",
+    "core"
+  ],
+  "homepage": "https://github.com/lerna/lerna/tree/master/core/validation-error#readme",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel Stockman",
+    "url": "https://github.com/evocateur"
+  },
+  "files": [
+    "validation-error.js"
+  ],
+  "main": "validation-error.js",
+  "engines": {
+    "node": ">= 10.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerna/lerna.git",
+    "directory": "core/validation-error"
+  },
+  "scripts": {
+    "test": "echo \"Run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "npmlog": "^4.1.2"
+  },
+  "gitHead": "4582c476e07dddddd6b2e3ab6e7f52c1f9eed59a"
+}

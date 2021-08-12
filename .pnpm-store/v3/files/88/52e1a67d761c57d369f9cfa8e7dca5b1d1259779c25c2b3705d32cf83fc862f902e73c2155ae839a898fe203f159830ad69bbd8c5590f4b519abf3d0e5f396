@@ -1,0 +1,95 @@
+{
+  "name": "syncpack",
+  "description": "Manage multiple package.json files, such as in Lerna Monorepos and Yarn/Pnpm Workspaces",
+  "version": "5.8.15",
+  "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
+  "bin": {
+    "syncpack": "dist/bin.js",
+    "syncpack-fix-mismatches": "dist/bin-fix-mismatches.js",
+    "syncpack-format": "dist/bin-format.js",
+    "syncpack-lint-semver-ranges": "dist/bin-lint-semver-ranges.js",
+    "syncpack-list": "dist/bin-list.js",
+    "syncpack-list-mismatches": "dist/bin-list-mismatches.js",
+    "syncpack-set-semver-ranges": "dist/bin-set-semver-ranges.js"
+  },
+  "bugs": "https://github.com/JamieMason/syncpack/issues",
+  "contributors": [
+    "Alex Hayton (https://github.com/AlexHayton)",
+    "Aparajita Fishman (https://github.com/aparajita)",
+    "Artur Wierzbicki (https://github.com/ArturWierzbicki)",
+    "Jamie Mason (https://github.com/JamieMason)",
+    "Luis Vieira (https://github.com/luisvieiragmr)",
+    "Marais Rossouw (https://github.com/maraisr)",
+    "Matt Sprague (https://github.com/uforic)"
+  ],
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "8.1.0",
+    "cosmiconfig": "7.0.0",
+    "expect-more": "1.1.0",
+    "fs-extra": "10.0.0",
+    "glob": "7.1.7",
+    "read-yaml-file": "2.1.0",
+    "semver": "7.3.5"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "9.0.12",
+    "@types/glob": "7.1.4",
+    "@types/jest": "26.0.24",
+    "@types/mock-fs": "4.13.1",
+    "@types/node": "16.4.13",
+    "@types/semver": "7.3.8",
+    "@typescript-eslint/eslint-plugin": "4.29.0",
+    "@typescript-eslint/parser": "4.29.0",
+    "eslint": "7.32.0",
+    "expect-more-jest": "5.3.0",
+    "jest": "27.0.6",
+    "mock-fs": "5.0.0",
+    "organize-imports-cli": "0.8.0",
+    "prettier": "2.3.2",
+    "rimraf": "3.0.2",
+    "ts-jest": "27.0.4",
+    "typescript": "4.3.5"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/JamieMason/syncpack#readme",
+  "keywords": [
+    "cli",
+    "dependency-manager",
+    "lerna",
+    "lernajs",
+    "monorepo",
+    "multi-package",
+    "nodejs",
+    "npm",
+    "package",
+    "package-json",
+    "packages",
+    "pnpm",
+    "semver",
+    "workspace",
+    "yarn"
+  ],
+  "license": "MIT",
+  "main": "syncpack",
+  "repository": "JamieMason/syncpack",
+  "resolutions": {
+    "lodash": "4.17.21"
+  },
+  "scripts": {
+    "build": "tsc --project .",
+    "format": "npm run format:imports && npm run format:source",
+    "format:imports": "organize-imports-cli ./src/**/*.ts",
+    "format:source": "prettier --write ./{src,test}/**/*.ts",
+    "lint": "eslint --fix --ext .ts,.tsx .",
+    "prebuild": "rimraf dist ./test/dist",
+    "prelint": "npm run format",
+    "prepack": "npm run build",
+    "test": "jest"
+  }
+}

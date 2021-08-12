@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+exports.every = void 0;
+var curry2_1 = require("./curry2");
+exports.every = curry2_1.curry2(function (fn, array) {
+    for (var i = 0, len = array.length; i < len; i++) {
+        if (fn(array[i]) === false) {
+            return false;
+        }
+    }
+    return array.length > 0;
+});

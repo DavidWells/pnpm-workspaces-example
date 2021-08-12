@@ -1,0 +1,18 @@
+"use strict";
+exports.__esModule = true;
+exports.isLessThanOrEqualTo = void 0;
+var is_number_1 = require("./is-number");
+var curry2_1 = require("./lib/curry2");
+/**
+ * Asserts that ${value} is less than or equal to ${otherNumber}.
+ * @param otherNumber 12
+ * @param value 8
+ * @matcherName toBeLessThanOrEqualTo
+ * @memberMatcherName toHaveLessThanOrEqualTo
+ * @matcherMessage expected ${value} to be less than or equal to ${otherNumber}
+ * @matcherNotMessage expected ${value} not to be less than or equal to
+ * ${otherNumber}
+ */
+exports.isLessThanOrEqualTo = curry2_1.curry2(function (otherNumber, value) {
+    return is_number_1.isNumber(value) && is_number_1.isNumber(otherNumber) && value <= otherNumber;
+});

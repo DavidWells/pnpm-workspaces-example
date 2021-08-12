@@ -1,0 +1,12 @@
+/**
+ * Asserts that ${value} is `true`, `false`, `new Boolean(true)`, or `new
+ * Boolean(false)`.
+ * @param value false
+ * @matcherName toBeBoolean
+ * @memberMatcherName toHaveBoolean
+ * @matcherMessage expected ${value} to be true, false, or an instance of
+ * Boolean
+ * @matcherNotMessage expected ${value} not to be true, false, or an instance of
+ * Boolean
+ */
+export declare const isBoolean: <CallTimeType = boolean>(value: unknown) => value is CallTimeType;

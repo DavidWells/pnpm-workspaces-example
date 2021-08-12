@@ -1,0 +1,5 @@
+import { SyncpackConfig } from '../../constants';
+import { InstalledPackage } from './installations/get-dependencies';
+declare type Options = Pick<SyncpackConfig, 'filter'>;
+export declare const matchesFilter: (options: Options) => ({ name }: InstalledPackage) => boolean;
+export {};

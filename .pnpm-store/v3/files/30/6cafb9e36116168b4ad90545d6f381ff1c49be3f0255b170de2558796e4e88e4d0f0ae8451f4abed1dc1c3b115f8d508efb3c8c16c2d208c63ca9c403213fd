@@ -1,0 +1,17 @@
+"use strict";
+exports.__esModule = true;
+exports.isNonEmptyString = void 0;
+var is_string_1 = require("./is-string");
+/**
+ * Asserts that ${value} is a valid `String` containing at least one character.
+ * @param value 'i am not empty'
+ * @matcherName toBeNonEmptyString
+ * @memberMatcherName toHaveNonEmptyString
+ * @matcherMessage expected ${value} to be a string with at least one character
+ * @matcherNotMessage expected ${value} not to be a string with at least one
+ * character
+ */
+var isNonEmptyString = function (value) {
+    return is_string_1.isString(value) && value.length > 0;
+};
+exports.isNonEmptyString = isNonEmptyString;

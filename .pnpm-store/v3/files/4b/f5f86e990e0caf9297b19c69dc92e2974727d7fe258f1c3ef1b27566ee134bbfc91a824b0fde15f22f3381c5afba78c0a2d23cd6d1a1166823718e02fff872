@@ -1,0 +1,9 @@
+"use strict";
+exports.__esModule = true;
+exports.isIndexedList = void 0;
+var is_array_1 = require("../is-array");
+var is_string_1 = require("../is-string");
+var isIndexedList = function (value) {
+    return is_string_1.isString(value) || is_array_1.isArray(value);
+};
+exports.isIndexedList = isIndexedList;

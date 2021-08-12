@@ -1,0 +1,58 @@
+{
+  "name": "lerna",
+  "version": "4.0.0",
+  "description": "A tool for managing JavaScript projects with multiple packages.",
+  "keywords": [
+    "lerna",
+    "monorepo",
+    "multi-package"
+  ],
+  "homepage": "https://github.com/lerna/lerna#readme",
+  "license": "MIT",
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "bin": {
+    "lerna": "cli.js"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "engines": {
+    "node": ">= 10.18.0"
+  },
+  "publishConfig": {
+    "tag": "next"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerna/lerna.git",
+    "directory": "core/lerna"
+  },
+  "scripts": {
+    "test": "echo \"Run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@lerna/add": "4.0.0",
+    "@lerna/bootstrap": "4.0.0",
+    "@lerna/changed": "4.0.0",
+    "@lerna/clean": "4.0.0",
+    "@lerna/cli": "4.0.0",
+    "@lerna/create": "4.0.0",
+    "@lerna/diff": "4.0.0",
+    "@lerna/exec": "4.0.0",
+    "@lerna/import": "4.0.0",
+    "@lerna/info": "4.0.0",
+    "@lerna/init": "4.0.0",
+    "@lerna/link": "4.0.0",
+    "@lerna/list": "4.0.0",
+    "@lerna/publish": "4.0.0",
+    "@lerna/run": "4.0.0",
+    "@lerna/version": "4.0.0",
+    "import-local": "^3.0.2",
+    "npmlog": "^4.1.2"
+  },
+  "gitHead": "4582c476e07dddddd6b2e3ab6e7f52c1f9eed59a"
+}

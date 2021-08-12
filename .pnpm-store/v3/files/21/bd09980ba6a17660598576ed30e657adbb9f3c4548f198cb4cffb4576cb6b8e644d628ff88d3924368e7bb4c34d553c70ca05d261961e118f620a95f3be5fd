@@ -1,0 +1,4 @@
+import { ValidRange } from '../../constants';
+export declare const isValidSemverRange: (value: unknown) => value is ValidRange;
+export declare const isSemver: (version: unknown) => boolean;
+export declare const isLooseSemver: (version: unknown) => boolean;

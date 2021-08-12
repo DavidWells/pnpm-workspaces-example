@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+exports.curry1 = void 0;
+function curry1(fn) {
+    return function curriedFn1(a) {
+        switch (arguments.length) {
+            case 1:
+                return fn(a);
+        }
+    };
+}
+exports.curry1 = curry1;

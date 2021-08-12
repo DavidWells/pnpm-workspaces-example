@@ -1,0 +1,6 @@
+import { Installation } from './get-dependencies';
+import { SyncpackConfig } from '../../../constants';
+import { SourceWrapper } from '../get-wrappers';
+declare type Options = Pick<SyncpackConfig, 'dev' | 'peer' | 'prod' | 'filter'>;
+export declare function getInstallations(wrappers: SourceWrapper[], options: Options): Generator<Installation>;
+export {};

@@ -1,0 +1,17 @@
+"use strict";
+exports.__esModule = true;
+exports.isWalkable = void 0;
+var is_null_1 = require("./is-null");
+var is_undefined_1 = require("./is-undefined");
+/**
+ * Asserts that ${value} is safe to attempt to read property values from.
+ * @param value {} {}
+ * @matcherName toBeWalkable
+ * @memberMatcherName toHaveWalkable
+ * @matcherMessage expected ${value} to be walkable
+ * @matcherNotMessage expected ${value} not to be walkable
+ */
+var isWalkable = function (value) {
+    return !is_null_1.isNull(value) && !is_undefined_1.isUndefined(value);
+};
+exports.isWalkable = isWalkable;

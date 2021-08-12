@@ -1,0 +1,53 @@
+"use strict";
+exports.__esModule = true;
+exports.getWrappers = void 0;
+var expect_more_1 = require("expect-more");
+var fs_extra_1 = require("fs-extra");
+var glob_1 = require("glob");
+var path_1 = require("path");
+var read_yaml_file_1 = require("read-yaml-file");
+var constants_1 = require("../../constants");
+var getPatternsFromJson = function (fileName, getProperties) {
+    var filePath = path_1.resolve(process.cwd(), fileName);
+    var config = fs_extra_1.readJsonSync(filePath, { throws: false });
+    if (!config)
+        return null;
+    var packages = getProperties(config).find(expect_more_1.isArrayOfStrings);
+    return packages ? [process.cwd()].concat(packages).map(function (dirPath) { return path_1.join(dirPath, 'package.json'); }) : null;
+};
+var getCliPatterns = function (program) {
+    return expect_more_1.isArrayOfStrings(program.source) ? program.source : null;
+};
+var getYarnPatterns = function () {
+    return getPatternsFromJson('package.json', function (config) { var _a; return [config.workspaces, (_a = config.workspaces) === null || _a === void 0 ? void 0 : _a.packages]; });
+};
+var getLernaPatterns = function () { return getPatternsFromJson('lerna.json', function (config) { return [config.packages]; }); };
+var getPnpmPatterns = function () {
+    try {
+        var filePath = path_1.resolve(process.cwd(), 'pnpm-workspace.yaml');
+        var config = read_yaml_file_1.sync(filePath);
+        var packages = [config.packages].find(expect_more_1.isArrayOfStrings);
+        return packages ? [process.cwd()].concat(packages).map(function (dirPath) { return path_1.join(dirPath, 'package.json'); }) : null;
+    }
+    catch (err) {
+        return null;
+    }
+};
+var getDefaultPatterns = function () { return constants_1.ALL_PATTERNS; };
+var resolvePattern = function (pattern) { return glob_1.sync(pattern, { absolute: true }); };
+var reduceFlatArray = function (all, next) { return all.concat(next); };
+var createWrapper = function (filePath) {
+    var json = fs_extra_1.readFileSync(filePath, { encoding: 'utf8' });
+    return {
+        contents: JSON.parse(json),
+        filePath: filePath,
+        json: json
+    };
+};
+var getWrappers = function (program) {
+    return (getCliPatterns(program) || getYarnPatterns() || getPnpmPatterns() || getLernaPatterns() || getDefaultPatterns())
+        .map(resolvePattern)
+        .reduce(reduceFlatArray, [])
+        .map(createWrapper);
+};
+exports.getWrappers = getWrappers;

@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var _a, _b, _c, _d, _e, _f;
+exports.__esModule = true;
+var chalk_1 = __importDefault(require("chalk"));
+var set_semver_ranges_1 = require("./commands/set-semver-ranges");
+var constants_1 = require("./constants");
+var get_config_1 = require("./lib/get-config");
+var commander_1 = require("commander");
+commander_1.program.description("\n  Ensure dependency versions used within \"dependencies\", \"devDependencies\", and\n  \"peerDependencies\" follow a consistent format.".replace(/^\n/, ''));
+commander_1.program.on('--help', function () {
+    console.log(chalk_1["default"](templateObject_1 || (templateObject_1 = __makeTemplateObject(["\nExamples:\n  {dim # uses defaults for resolving packages}\n  syncpack set-semver-ranges\n  {dim # uses packages defined by --source when provided}\n  syncpack set-semver-ranges --source {yellow \"apps/*/package.json\"}\n  {dim # multiple globs can be provided like this}\n  syncpack set-semver-ranges --source {yellow \"apps/*/package.json\"} --source {yellow \"core/*/package.json\"}\n  {dim # uses dependencies regular expression defined by --filter when provided}\n  syncpack set-semver-ranges --filter {yellow \"typescript|tslint\"}\n  {dim # use ~ range instead of default \"\"}\n  syncpack set-semver-ranges --semver-range ~\n  {dim # set ~ range in \"devDependencies\"}\n  syncpack set-semver-ranges --dev --semver-range ~\n  {dim # set ~ range in \"devDependencies\" and \"peerDependencies\"}\n  syncpack set-semver-ranges --dev --peer --semver-range ~\n  {dim # indent package.json with 4 spaces instead of 2}\n  syncpack set-semver-ranges --indent {yellow \"    \"}\n\nSupported Ranges:\n  <  {dim <1.4.2}\n  <= {dim <=1.4.2}\n  \"\" {dim 1.4.2}\n  ~  {dim ~1.4.2}\n  ^  {dim ^1.4.2}\n  >= {dim >=1.4.2}\n  >  {dim >1.4.2}\n  *  {dim *}\n\nResolving Packages:\n  1. If {yellow --source} globs are provided, use those.\n  2. If using Pnpm Workspaces, read {yellow packages} from {yellow pnpm-workspace.yaml} in the root of the project.\n  3. If using Yarn Workspaces, read {yellow workspaces} from {yellow package.json}.\n  4. If using Lerna, read {yellow packages} from {yellow lerna.json}.\n  5. Default to {yellow \"package.json\"} and {yellow \"packages/*/package.json\"}.\n\nReference:\n  globs            {blue.underline https://github.com/isaacs/node-glob#glob-primer}\n  lerna.json       {blue.underline https://github.com/lerna/lerna#lernajson}\n  Yarn Workspaces  {blue.underline https://yarnpkg.com/lang/en/docs/workspaces}\n  Pnpm Workspaces  {blue.underline https://pnpm.js.org/en/workspaces}\n"], ["\nExamples:\n  {dim # uses defaults for resolving packages}\n  syncpack set-semver-ranges\n  {dim # uses packages defined by --source when provided}\n  syncpack set-semver-ranges --source {yellow \"apps/*/package.json\"}\n  {dim # multiple globs can be provided like this}\n  syncpack set-semver-ranges --source {yellow \"apps/*/package.json\"} --source {yellow \"core/*/package.json\"}\n  {dim # uses dependencies regular expression defined by --filter when provided}\n  syncpack set-semver-ranges --filter {yellow \"typescript|tslint\"}\n  {dim # use ~ range instead of default \"\"}\n  syncpack set-semver-ranges --semver-range ~\n  {dim # set ~ range in \"devDependencies\"}\n  syncpack set-semver-ranges --dev --semver-range ~\n  {dim # set ~ range in \"devDependencies\" and \"peerDependencies\"}\n  syncpack set-semver-ranges --dev --peer --semver-range ~\n  {dim # indent package.json with 4 spaces instead of 2}\n  syncpack set-semver-ranges --indent {yellow \"    \"}\n\nSupported Ranges:\n  <  {dim <1.4.2}\n  <= {dim <=1.4.2}\n  \"\" {dim 1.4.2}\n  ~  {dim ~1.4.2}\n  ^  {dim ^1.4.2}\n  >= {dim >=1.4.2}\n  >  {dim >1.4.2}\n  *  {dim *}\n\nResolving Packages:\n  1. If {yellow --source} globs are provided, use those.\n  2. If using Pnpm Workspaces, read {yellow packages} from {yellow pnpm-workspace.yaml} in the root of the project.\n  3. If using Yarn Workspaces, read {yellow workspaces} from {yellow package.json}.\n  4. If using Lerna, read {yellow packages} from {yellow lerna.json}.\n  5. Default to {yellow \"package.json\"} and {yellow \"packages/*/package.json\"}.\n\nReference:\n  globs            {blue.underline https://github.com/isaacs/node-glob#glob-primer}\n  lerna.json       {blue.underline https://github.com/lerna/lerna#lernajson}\n  Yarn Workspaces  {blue.underline https://yarnpkg.com/lang/en/docs/workspaces}\n  Pnpm Workspaces  {blue.underline https://pnpm.js.org/en/workspaces}\n"]))));
+});
+(_a = (_b = (_c = (_d = (_e = (_f = commander_1.program
+    .option.apply(commander_1.program, __spreadArray([], __read(constants_1.option.source))))
+    .option.apply(_f, __spreadArray([], __read(constants_1.option.prod))))
+    .option.apply(_e, __spreadArray([], __read(constants_1.option.dev))))
+    .option.apply(_d, __spreadArray([], __read(constants_1.option.peer))))
+    .option.apply(_c, __spreadArray([], __read(constants_1.option.filter))))
+    .option.apply(_b, __spreadArray([], __read(constants_1.option.indent))))
+    .option.apply(_a, __spreadArray([], __read(constants_1.option.semverRange))).parse(process.argv);
+set_semver_ranges_1.setSemverRangesToDisk(get_config_1.getConfig({
+    dev: commander_1.program.opts().dev,
+    filter: commander_1.program.opts().filter,
+    indent: commander_1.program.opts().indent,
+    peer: commander_1.program.opts().peer,
+    prod: commander_1.program.opts().prod,
+    semverRange: commander_1.program.opts().semverRange,
+    source: commander_1.program.opts().source
+}));
+var templateObject_1;

@@ -1,0 +1,26 @@
+"use strict";
+exports.__esModule = true;
+exports.isLooseSemver = exports.isSemver = exports.isValidSemverRange = void 0;
+var expect_more_1 = require("expect-more");
+var constants_1 = require("../../constants");
+var isValidSemverRange = function (value) {
+    return value === constants_1.RANGE_EXACT ||
+        value === constants_1.RANGE_GT ||
+        value === constants_1.RANGE_GTE ||
+        value === constants_1.RANGE_LOOSE ||
+        value === constants_1.RANGE_LT ||
+        value === constants_1.RANGE_LTE ||
+        value === constants_1.RANGE_MINOR ||
+        value === constants_1.RANGE_PATCH;
+};
+exports.isValidSemverRange = isValidSemverRange;
+var isSemver = function (version) {
+    return (expect_more_1.isString(version) &&
+        version.search(/^(~|\^|>=|>|<=|<|)?[0-9]+\.[0-9x]+\.[0-9x]+/) !== -1 &&
+        version.indexOf(' ') === -1);
+};
+exports.isSemver = isSemver;
+var isLooseSemver = function (version) {
+    return expect_more_1.isString(version) && exports.isSemver(version) && version.search(/\.x(\.|$)/) !== -1;
+};
+exports.isLooseSemver = isLooseSemver;

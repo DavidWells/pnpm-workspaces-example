@@ -1,0 +1,22 @@
+"use strict";
+exports.__esModule = true;
+exports.isWithinRange = void 0;
+var is_greater_than_or_equal_to_1 = require("./is-greater-than-or-equal-to");
+var is_less_than_or_equal_to_1 = require("./is-less-than-or-equal-to");
+var curry3_1 = require("./lib/curry3");
+/**
+ * Asserts that ${value} is a `Number` which is both greater than or equal to
+ * ${floor} and less than or equal to ${ceiling}.
+ * @param floor 0
+ * @param ceiling 10
+ * @param value 7
+ * @matcherName toBeWithinRange
+ * @memberMatcherName toHaveNumberWithinRange
+ * @matcherMessage expected ${value} to be greater than or equal to ${floor} and
+ * less than or equal to ${ceiling}
+ * @matcherNotMessage expected ${value} not to be greater than or equal to
+ * ${floor} and less than or equal to ${ceiling}
+ */
+exports.isWithinRange = curry3_1.curry3(function (floor, ceiling, value) {
+    return is_less_than_or_equal_to_1.isLessThanOrEqualTo(ceiling, value) && is_greater_than_or_equal_to_1.isGreaterThanOrEqualTo(floor, value);
+});

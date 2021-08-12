@@ -1,0 +1,17 @@
+"use strict";
+exports.__esModule = true;
+exports.isEmptyObject = void 0;
+var is_object_1 = require("./is-object");
+var keys_1 = require("./lib/keys");
+/**
+ * Asserts that ${value} is a valid `Object` containing no instance members.
+ * @param value {} {}
+ * @matcherName toBeEmptyObject
+ * @memberMatcherName toHaveEmptyObject
+ * @matcherMessage expected ${value} to be an empty object
+ * @matcherNotMessage expected ${value} not to be an empty object
+ */
+var isEmptyObject = function (value) {
+    return is_object_1.isObject(value) && keys_1.keys(value).length === 0;
+};
+exports.isEmptyObject = isEmptyObject;

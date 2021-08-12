@@ -1,0 +1,17 @@
+"use strict";
+exports.__esModule = true;
+exports.isNonEmptyArray = void 0;
+var is_array_1 = require("./is-array");
+/**
+ * Asserts that ${value} is an `Array` containing at least one value.
+ * @param value ['i', 'am not empty']
+ * @matcherName toBeNonEmptyArray
+ * @memberMatcherName toHaveNonEmptyArray
+ * @matcherMessage expected ${value} to be an array with at least one item
+ * @matcherNotMessage expected ${value} not to be an array with at least one
+ * item
+ */
+var isNonEmptyArray = function (value) {
+    return is_array_1.isArray(value) && value.length > 0;
+};
+exports.isNonEmptyArray = isNonEmptyArray;

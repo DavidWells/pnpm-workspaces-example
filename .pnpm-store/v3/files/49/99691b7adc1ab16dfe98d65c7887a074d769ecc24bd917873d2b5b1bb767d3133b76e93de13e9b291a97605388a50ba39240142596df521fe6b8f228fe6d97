@@ -1,0 +1,18 @@
+"use strict";
+exports.__esModule = true;
+exports.isWhitespace = void 0;
+var is_string_1 = require("./is-string");
+/**
+ * Asserts that ${value} is a `String` containing only whitespace characters.
+ * @param value ' '
+ * @matcherName toBeWhitespace
+ * @memberMatcherName toHaveWhitespace
+ * @matcherMessage expected ${value} to be a string containing only whitespace
+ * characters
+ * @matcherNotMessage expected ${value} not to be a string containing only
+ * whitespace characters
+ */
+var isWhitespace = function (value) {
+    return is_string_1.isString(value) && value.search(/\S/) === -1;
+};
+exports.isWhitespace = isWhitespace;

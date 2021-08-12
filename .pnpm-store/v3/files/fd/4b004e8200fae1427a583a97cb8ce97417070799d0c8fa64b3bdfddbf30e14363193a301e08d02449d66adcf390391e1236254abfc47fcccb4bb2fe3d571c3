@@ -1,0 +1,21 @@
+"use strict";
+exports.__esModule = true;
+exports.hasMember = void 0;
+var is_string_1 = require("./is-string");
+var is_walkable_1 = require("./is-walkable");
+var curry2_1 = require("./lib/curry2");
+/**
+ * Asserts that ${value} has a property of the given name, even if the value of
+ * that property is undefined. This assertion describes the shape of the given
+ * value. For example, value.prop is `undefined` in both of the following
+ * scenarios, but `{ prop: undefined }` and `{ }` do not have the same shape.
+ * @param ownKeyName 'name'
+ * @param value {} { name: 'Guybrush Threepwood' }
+ * @matcherName toHaveMember
+ * @memberMatcherName toHaveNestedMember
+ * @matcherMessage expected ${value} to have a property at ${ownKeyName}
+ * @matcherNotMessage expected ${value} not to have a property at ${ownKeyName}
+ */
+exports.hasMember = curry2_1.curry2(function (ownKeyName, value) {
+    return is_string_1.isString(ownKeyName) && is_walkable_1.isWalkable(value) && ownKeyName in value;
+});

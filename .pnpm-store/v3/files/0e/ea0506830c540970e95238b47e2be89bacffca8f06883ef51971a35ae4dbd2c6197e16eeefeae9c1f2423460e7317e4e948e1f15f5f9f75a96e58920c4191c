@@ -1,0 +1,19 @@
+"use strict";
+exports.__esModule = true;
+exports.isNonEmptyObject = void 0;
+var is_object_1 = require("./is-object");
+var keys_1 = require("./lib/keys");
+/**
+ * Asserts that ${value} is an `Object` containing at least one own member.
+ * @param value {} { i: 'am not empty' }
+ * @matcherName toBeNonEmptyObject
+ * @memberMatcherName toHaveNonEmptyObject
+ * @matcherMessage expected ${value} to be an object with at least one own
+ * member
+ * @matcherNotMessage expected ${value} not to be an object with at least one
+ * own member
+ */
+var isNonEmptyObject = function (value) {
+    return is_object_1.isObject(value) && keys_1.keys(value).length > 0;
+};
+exports.isNonEmptyObject = isNonEmptyObject;

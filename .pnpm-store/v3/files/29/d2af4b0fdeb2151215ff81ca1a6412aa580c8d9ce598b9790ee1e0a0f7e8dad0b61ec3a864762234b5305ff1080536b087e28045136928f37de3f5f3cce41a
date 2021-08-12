@@ -1,0 +1,19 @@
+"use strict";
+exports.__esModule = true;
+exports.startsWith = void 0;
+var is_non_empty_string_1 = require("./is-non-empty-string");
+var curry2_1 = require("./lib/curry2");
+/**
+ * Assert value is a string whose leading characters are equal to `other`.
+ * @param otherString 'Java'
+ * @param value 'JavaScript'
+ * @matcherName toStartWith
+ * @memberMatcherName toHaveStartingWith
+ * @matcherMessage expected ${value} to start with ${otherString}
+ * @matcherNotMessage expected ${value} not to start with ${otherString}
+ */
+exports.startsWith = curry2_1.curry2(function (otherString, value) {
+    return is_non_empty_string_1.isNonEmptyString(value) &&
+        is_non_empty_string_1.isNonEmptyString(otherString) &&
+        value.slice(0, otherString.length) === otherString;
+});

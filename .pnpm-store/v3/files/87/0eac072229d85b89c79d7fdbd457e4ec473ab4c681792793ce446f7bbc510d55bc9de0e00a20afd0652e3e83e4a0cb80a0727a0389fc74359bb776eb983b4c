@@ -1,0 +1,9 @@
+/**
+ * Asserts that ${value} is an even `Number`.
+ * @param value 2
+ * @matcherName toBeEvenNumber
+ * @memberMatcherName toHaveEvenNumber
+ * @matcherMessage expected ${value} to be an even number
+ * @matcherNotMessage expected ${value} not to be an even number
+ */
+export declare const isEvenNumber: (value: unknown) => value is number;

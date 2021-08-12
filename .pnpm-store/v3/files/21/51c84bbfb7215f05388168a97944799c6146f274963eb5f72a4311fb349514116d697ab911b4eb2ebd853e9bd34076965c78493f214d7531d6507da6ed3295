@@ -1,0 +1,19 @@
+"use strict";
+exports.__esModule = true;
+exports.endsWith = void 0;
+var is_non_empty_string_1 = require("./is-non-empty-string");
+var curry2_1 = require("./lib/curry2");
+/**
+ * Asserts that ${value} is a string whose trailing characters are equal to ${otherString}.
+ * @param otherString 'Script'
+ * @param value 'JavaScript'
+ * @matcherName toEndWith
+ * @memberMatcherName toHaveEndingWith
+ * @matcherMessage expected ${value} to end with ${otherString}
+ * @matcherNotMessage expected ${value} not to end with ${otherString}
+ */
+exports.endsWith = curry2_1.curry2(function (otherString, value) {
+    return is_non_empty_string_1.isNonEmptyString(value) &&
+        is_non_empty_string_1.isNonEmptyString(otherString) &&
+        value.slice(value.length - otherString.length, value.length) === otherString;
+});

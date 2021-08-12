@@ -1,0 +1,9 @@
+/**
+ * Asserts that ${value} is a valid `Object` containing no instance members.
+ * @param value {} {}
+ * @matcherName toBeEmptyObject
+ * @memberMatcherName toHaveEmptyObject
+ * @matcherMessage expected ${value} to be an empty object
+ * @matcherNotMessage expected ${value} not to be an empty object
+ */
+export declare const isEmptyObject: <T extends unknown = any>(value: unknown) => value is T;
