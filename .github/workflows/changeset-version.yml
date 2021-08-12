@@ -7,6 +7,7 @@ on:
 
 env:
   PNPM_CACHE_FOLDER: .pnpm-store
+  HUSKY: 0  # Bypass husky commit hook for CI
 
 jobs:
   version:
@@ -36,11 +37,23 @@ jobs:
           version: 6.x
           run_install: true
 
-      - name: create version
+      # - name: create version
+      #   uses: changesets/action@master
+      #   if: github.ref == 'refs/heads/master'
+      #   with:
+      #     commit: 'chore(changeset): version update'
+      #     title: 'chore(changeset): version update'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create versions PR & prepare publish
+        id: changesets
         uses: changesets/action@master
-        if: github.ref == 'refs/heads/master'
         with:
-          commit: 'chore(changeset): version update'
-          title: 'chore(changeset): version update'
+          version: pnpm ci:version
+          commit: 'chore(deploy): Release'
+          title: 'chore(deploy): Release'
+          publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
