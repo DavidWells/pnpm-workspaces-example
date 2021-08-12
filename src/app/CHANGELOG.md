@@ -1,5 +1,16 @@
 # pnpm-app-example
 
+## 1.1.0
+
+### Minor Changes
+
+- [#16](https://github.com/DavidWells/pnpm-workspaces-example/pull/16) [`0d3b5a4`](https://github.com/DavidWells/pnpm-workspaces-example/commit/0d3b5a428d465678bb0602c5a969ede06544d254) Thanks [@DavidWells](https://github.com/DavidWells)! - Fixed the package refs
+
+### Patch Changes
+
+- Updated dependencies [[`0d3b5a4`](https://github.com/DavidWells/pnpm-workspaces-example/commit/0d3b5a428d465678bb0602c5a969ede06544d254)]:
+  - testing-pnpm-package-c@1.1.0
+
 ## 1.0.11
 
 ### Patch Changes
