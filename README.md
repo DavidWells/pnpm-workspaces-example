@@ -31,6 +31,11 @@ pnpm add lodash -w -D
 5. `pnpx changeset version` to bump versions and generate changelogs
 6. Publish to npm via `pnpm publish -r` or `changeset publish`
 
+## Reference projects
+
+- https://github.com/remirror/template/blob/main/.github/workflows/publish.yml
+- https://github.com/electron-userland/electron-builder/blob/master/.github/workflows/pr-release.yml
+
 ## Alt approaches
 
 - [npm-workspaces-example](https://github.com/DavidWells/npm-workspaces-example)
