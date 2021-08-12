@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .pnpm-store/
+~/.npmrc
+.npmrc
 
 dist
 src/packages/package-a/src/version.js
