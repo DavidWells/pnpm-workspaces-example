@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
         with:          
           fetch-depth: 0
-      
+
       - name: setup caching
         uses: actions/cache@v2
         with:
@@ -26,16 +26,22 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+
       - name: setup node.js
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
+          cache: 'pnpm'
 
       - name: setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.x
-          run_install: true
+
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
+      - run: pnpm install
 
       # - name: create version
       #   uses: changesets/action@master
