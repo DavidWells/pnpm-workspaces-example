@@ -1,5 +1,5 @@
-import {a} from 'package-a'
-import {b} from 'package-b'
+import {a} from 'testing-pnpm-package-a'
+import {b} from 'testing-pnpm-package-b'
 
 const thing = a + b
 
