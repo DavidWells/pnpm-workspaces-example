@@ -22,12 +22,12 @@ jobs:
       - name: setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.10.0
+          version: 6.x
 
       - name: setup node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: 16.x
           cache: 'pnpm'
 
       - name: Set up NPM credentials
