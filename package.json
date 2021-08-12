@@ -29,7 +29,7 @@
     "build-a": "pnpm run build --filter testing-pnpm-package-a",
     "build-pkgs": "pnpm run build --filter testing-pnpm-package-*",
     "publish": "pnpm publish -r",
-    "ci:version": "pnpx changeset version && pnpm install && git add .",
+    "ci:version": "pnpx changeset version && git add . && git status",
     "ci:publish": "pnpm build-pkgs && git status && pnpm publish -r",
     "changeset-publish": "changeset publish"
   },
