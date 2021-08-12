@@ -30,6 +30,11 @@ jobs:
           node-version: 16.x
           cache: 'pnpm'
 
+      - name: Set up NPM credentials
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}          
+
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
