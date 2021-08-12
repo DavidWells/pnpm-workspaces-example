@@ -1,5 +1,12 @@
 # testing-pnpm-package-c
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`0bfc2e9`](https://github.com/DavidWells/pnpm-workspaces-example/commit/0bfc2e9da517c0e07374cea8f0f5559fe5c102c4)]:
+  - testing-pnpm-package-d@1.0.4
+
 ## 1.0.5
 
 ### Patch Changes
