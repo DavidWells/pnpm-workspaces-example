@@ -1,6 +1,6 @@
 {
   "name": "testing-pnpm-package-d",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "its a package",
   "amdName": "packageD",
   "source": "src/index.js",
