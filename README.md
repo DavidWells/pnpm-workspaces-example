@@ -33,6 +33,7 @@ pnpm add lodash -w -D
 
 ## Reference projects
 
+- [Release workflow with changesets](https://colebemis.com/release-workflow-with-changesets/)
 - https://github.com/remirror/template/blob/main/.github/workflows/publish.yml
 - https://github.com/electron-userland/electron-builder/blob/master/.github/workflows/pr-release.yml
 
