@@ -1,2 +1,2 @@
 
-export const a = 'a123'
+export const a = 'a123xxx'
