@@ -43,7 +43,7 @@ pnpm add lodash -w -D
 - [lerna-example](https://github.com/DavidWells/lerna-example)
 
 
-## Flow
+## Publishing Packages Flow
 
 ### 1. Update code
 
@@ -103,7 +103,7 @@ Submit a pull request with your changes. If the pull request contains any new ma
 
 This means the `testing-pnpm-package-a` and `testing-pnpm-package-c` will be bumped with a patch version number and a new pull request will be created with these new versions. 
 
-## 3. Review the new "release" pull request
+### 3. Review the new "release" pull request
 
 The changeset [github action](https://github.com/DavidWells/pnpm-workspaces-example/blob/master/.github/workflows/changeset-version.yml) will automatically bump any references to the changed packages and submit this new "release" pull request. [details](https://github.com/DavidWells/pnpm-workspaces-example/runs/3748166870?check_suite_focus=true#step:9:12)
 
@@ -111,7 +111,7 @@ Review the changes and verify everything looks correct.
 
 ![image](https://user-images.githubusercontent.com/532272/135332008-bb65c1b3-3986-480f-9388-69820f13238e.png)
 
-### 4. Merge to publish
+### 4. Merge to publish to NPM
 
 If the pull request in step 3 is merged into master, the packages will be automatically released to NPM. This again is driven by the same [github action](https://github.com/DavidWells/pnpm-workspaces-example/blob/master/.github/workflows/changeset-version.yml). [details](https://github.com/DavidWells/pnpm-workspaces-example/runs/3748310847?check_suite_focus=true#step:9:16)
 
