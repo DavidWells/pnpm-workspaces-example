@@ -1,6 +1,6 @@
 {
   "name": "testing-pnpm-package-c",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "amdName": "packageC",
   "source": "src/index.js",
@@ -29,7 +29,7 @@
   "author": "DavidWells",
   "license": "ISC",
   "dependencies": {
-    "testing-pnpm-package-a": "1.0.1",
+    "testing-pnpm-package-a": "1.0.2",
     "testing-pnpm-package-b": "1.0.1",
     "testing-pnpm-package-d": "1.0.6"
   }

@@ -32,9 +32,9 @@ importers:
 
   src/app:
     specifiers:
-      testing-pnpm-package-a: 1.0.1
+      testing-pnpm-package-a: 1.0.2
       testing-pnpm-package-b: 1.0.1
-      testing-pnpm-package-c: 1.2.0
+      testing-pnpm-package-c: 1.2.1
     dependencies:
       testing-pnpm-package-a: link:../packages/package-a
       testing-pnpm-package-b: link:../packages/package-b
@@ -48,7 +48,7 @@ importers:
 
   src/packages/package-c:
     specifiers:
-      testing-pnpm-package-a: 1.0.1
+      testing-pnpm-package-a: 1.0.2
       testing-pnpm-package-b: 1.0.1
       testing-pnpm-package-d: 1.0.6
     dependencies:
