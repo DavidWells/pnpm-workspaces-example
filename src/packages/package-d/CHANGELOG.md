@@ -1,5 +1,11 @@
 # testing-pnpm-package-d
 
+## 1.0.8
+
+### Patch Changes
+
+- [#24](https://github.com/DavidWells/pnpm-workspaces-example/pull/24) [`6f9ec10`](https://github.com/DavidWells/pnpm-workspaces-example/commit/6f9ec10be4d34ec3de6845c53c71cab4884ffab9) Thanks [@DavidWells](https://github.com/DavidWells)! - Adding another cool thing
+
 ## 1.0.7
 
 ### Patch Changes
