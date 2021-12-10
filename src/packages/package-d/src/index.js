@@ -1,2 +1,2 @@
 
-export const d = 'dcool wow niceeeee cool woow'
+export const d = 'dcool wow niceeeee cool bump'
