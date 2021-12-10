@@ -1,5 +1,11 @@
 # testing-pnpm-package-d
 
+## 1.0.9
+
+### Patch Changes
+
+- [#26](https://github.com/DavidWells/pnpm-workspaces-example/pull/26) [`916dd76`](https://github.com/DavidWells/pnpm-workspaces-example/commit/916dd765d5e2abe0de0f72a28531a4d365d0ad62) Thanks [@DavidWells](https://github.com/DavidWells)! - Testing flow again
+
 ## 1.0.8
 
 ### Patch Changes
